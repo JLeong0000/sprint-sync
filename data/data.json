@@ -1,0 +1,289 @@
+{
+	"projects": [
+		{
+			"id": 1,
+			"title": "New Website Development",
+			"description": "Develop a modern website for a client in the e-commerce industry.",
+			"status": "In Progress",
+			"startDate": "2023-03-01",
+			"dueDate": "2023-08-30",
+			"manager": {
+				"id": 101,
+				"name": "John Doe",
+				"email": "john.doe@example.com"
+			},
+			"teamMembers": [
+				{
+					"id": 201,
+					"name": "Alice Smith",
+					"email": "alice.smith@example.com"
+				},
+				{
+					"id": 202,
+					"name": "Bob Johnson",
+					"email": "bob.johnson@example.com"
+				}
+			],
+			"tasks": [
+				{
+					"id": 1001,
+					"title": "Requirements Gathering",
+					"status": "Completed",
+					"dueDate": "2023-04-15",
+					"assignee": {
+						"id": 201,
+						"name": "Alice Smith"
+					},
+					"todos": [
+						{
+							"id": 3001,
+							"description": "Interview the client to gather requirements.",
+							"completed": true
+						},
+						{
+							"id": 3002,
+							"description": "Create a requirements document.",
+							"completed": true
+						}
+					]
+				},
+				{
+					"id": 1002,
+					"title": "Design Mockups",
+					"status": "In Progress",
+					"dueDate": "2023-05-20",
+					"assignee": {
+						"id": 202,
+						"name": "Bob Johnson"
+					},
+					"todos": [
+						{
+							"id": 3003,
+							"description": "Create wireframes for the website.",
+							"completed": false
+						},
+						{
+							"id": 3004,
+							"description": "Design the homepage mockup.",
+							"completed": false
+						}
+					]
+				},
+				{
+					"id": 1003,
+					"title": "Frontend Development",
+					"status": "Planned",
+					"dueDate": "2023-06-30",
+					"assignee": {
+						"id": 0,
+						"name": "Unassigned"
+					},
+					"todos": []
+				}
+			]
+		},
+		{
+			"id": 2,
+			"title": "Marketing Campaign",
+			"description": "Plan and execute a marketing campaign for a product launch.",
+			"status": "Planned",
+			"startDate": "2023-04-01",
+			"dueDate": "2023-07-15",
+			"manager": {
+				"id": 102,
+				"name": "Eva Green",
+				"email": "eva.green@example.com"
+			},
+			"teamMembers": [
+				{
+					"id": 203,
+					"name": "Charlie Brown",
+					"email": "charlie.brown@example.com"
+				}
+			],
+			"tasks": [
+				{
+					"id": 1004,
+					"title": "Market Research",
+					"status": "In Progress",
+					"dueDate": "2023-05-15",
+					"assignee": {
+						"id": 203,
+						"name": "Charlie Brown"
+					},
+					"todos": [
+						{
+							"id": 3005,
+							"description": "Collect data on the target audience.",
+							"completed": false
+						},
+						{
+							"id": 3006,
+							"description": "Analyze competitor marketing strategies.",
+							"completed": false
+						}
+					]
+				},
+				{
+					"id": 1005,
+					"title": "Campaign Planning",
+					"status": "Planned",
+					"dueDate": "2023-06-10",
+					"assignee": {
+						"id": 0,
+						"name": "Unassigned"
+					},
+					"todos": []
+				}
+			]
+		},
+		{
+			"id": 3,
+			"title": "New Mobile App Development",
+			"description": "Develop a mobile app for a client in the e-commerce industry.",
+			"status": "Planned",
+			"startDate": "2023-05-01",
+			"dueDate": "2023-10-15",
+			"manager": {
+				"id": 101,
+				"name": "John Doe",
+				"email": "john.doe@example.com"
+			},
+			"teamMembers": [
+				{
+					"id": 204,
+					"name": "Evelyn Wong",
+					"email": "evelyn.wong@example.com"
+				},
+				{
+					"id": 205,
+					"name": "David Lee",
+					"email": "david.lee@example.com"
+				}
+			],
+			"tasks": [
+				{
+					"id": 1006,
+					"title": "Project Planning",
+					"status": "Planned",
+					"dueDate": "2023-06-01",
+					"assignee": {
+						"id": 0,
+						"name": "Unassigned"
+					},
+					"todos": []
+				},
+				{
+					"id": 1007,
+					"title": "UI/UX Design",
+					"status": "Planned",
+					"dueDate": "2023-06-15",
+					"assignee": {
+						"id": 0,
+						"name": "Unassigned"
+					},
+					"todos": []
+				}
+			]
+		},
+		{
+			"id": 4,
+			"title": "Product Launch Campaign",
+			"description": "Plan and execute a marketing campaign for a product launch.",
+			"status": "Planned",
+			"startDate": "2023-05-15",
+			"dueDate": "2023-11-30",
+			"manager": {
+				"id": 102,
+				"name": "Eva Green",
+				"email": "eva.green@example.com"
+			},
+			"teamMembers": [
+				{
+					"id": 206,
+					"name": "Fiona Adams",
+					"email": "fiona.adams@example.com"
+				}
+			],
+			"tasks": [
+				{
+					"id": 1008,
+					"title": "Campaign Strategy",
+					"status": "Planned",
+					"dueDate": "2023-06-30",
+					"assignee": {
+						"id": 0,
+						"name": "Unassigned"
+					},
+					"todos": []
+				}
+			]
+		},
+		{
+			"id": 5,
+			"title": "Client Portal Redesign",
+			"description": "Redesign the client portal for improved user experience.",
+			"status": "In Progress",
+			"startDate": "2023-06-01",
+			"dueDate": "2023-12-31",
+			"manager": {
+				"id": 101,
+				"name": "John Doe",
+				"email": "john.doe@example.com"
+			},
+			"teamMembers": [
+				{
+					"id": 207,
+					"name": "Grace Taylor",
+					"email": "grace.taylor@example.com"
+				}
+			],
+			"tasks": [
+				{
+					"id": 1009,
+					"title": "User Research",
+					"status": "Completed",
+					"dueDate": "2023-07-15",
+					"assignee": {
+						"id": 207,
+						"name": "Grace Taylor"
+					},
+					"todos": [
+						{
+							"id": 3007,
+							"description": "Conduct user surveys and interviews.",
+							"completed": false
+						},
+						{
+							"id": 3008,
+							"description": "Analyze user feedback and pain points.",
+							"completed": false
+						}
+					]
+				},
+				{
+					"id": 1010,
+					"title": "Design Prototypes",
+					"status": "Completed",
+					"dueDate": "2023-08-15",
+					"assignee": {
+						"id": 207,
+						"name": "Grace Taylor"
+					},
+					"todos": []
+				},
+				{
+					"id": 1011,
+					"title": "Development",
+					"status": "Planned",
+					"dueDate": "2023-09-15",
+					"assignee": {
+						"id": 0,
+						"name": "Unassigned"
+					},
+					"todos": []
+				}
+			]
+		}
+	]
+}
