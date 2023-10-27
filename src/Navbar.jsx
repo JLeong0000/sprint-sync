@@ -14,7 +14,7 @@ const Navbar = ({ projects }) => {
 	const [active, setActive] = useState({});
 
 	return (
-		<div className="sticky top-0 flex flex-col px-10 py-10 bg-emerald-950 h-screen space-y-10 w-[260px]">
+		<div className="sticky top-0 flex flex-col px-3 py-10 bg-emerald-950 h-screen space-y-10 w-[200px] md:px-10 md:w-[260px]">
 			<h1 className="flex flex-col items-center font-oswald font-medium text-white text-4xl tracking-wider">
 				SPRINT <span className="text-emerald-300 tracking-widest text-5xl -my-2">SYNC</span>
 			</h1>
@@ -28,13 +28,13 @@ const Navbar = ({ projects }) => {
 				</Link>
 				<Link
 					to="/:id"
-					className="border-[1px] border-white px-5 py-3 rounded-md hover:text-emerald-500 active:text-emerald-600"
+					className="px-5 py-3 rounded-md hover:bg-emerald-300 hover:text-black active:bg-emerald-500"
 				>
 					Team Member 1
 				</Link>
 				<Link
 					to="/:id"
-					className="border-[1px] border-white px-5 py-3 rounded-md hover:text-emerald-500 active:text-emerald-600"
+					className="px-5 py-3 rounded-md hover:bg-emerald-300 hover:text-black active:bg-emerald-500"
 				>
 					Team Member 2
 				</Link>

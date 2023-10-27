@@ -4,7 +4,7 @@
 			"id": 1,
 			"title": "New Website Development",
 			"description": "Develop a modern website for a client in the e-commerce industry.",
-			"status": "In Progress",
+			"status": "Completed",
 			"startDate": "2023-03-01",
 			"dueDate": "2023-08-30",
 			"manager": {
@@ -50,7 +50,7 @@
 				{
 					"id": 1002,
 					"title": "Design Mockups",
-					"status": "In Progress",
+					"status": "Completed",
 					"dueDate": "2023-05-20",
 					"assignee": {
 						"id": 202,
@@ -60,23 +60,23 @@
 						{
 							"id": 3003,
 							"description": "Create wireframes for the website.",
-							"completed": false
+							"completed": true
 						},
 						{
 							"id": 3004,
 							"description": "Design the homepage mockup.",
-							"completed": false
+							"completed": true
 						}
 					]
 				},
 				{
 					"id": 1003,
 					"title": "Frontend Development",
-					"status": "Planned",
+					"status": "Completed",
 					"dueDate": "2023-06-30",
 					"assignee": {
-						"id": 0,
-						"name": "Unassigned"
+						"id": 202,
+						"name": "Bob Johnson"
 					},
 					"todos": []
 				}
@@ -86,7 +86,7 @@
 			"id": 2,
 			"title": "Marketing Campaign",
 			"description": "Plan and execute a marketing campaign for a product launch.",
-			"status": "Planned",
+			"status": "In Progress",
 			"startDate": "2023-04-01",
 			"dueDate": "2023-07-15",
 			"manager": {
@@ -105,7 +105,7 @@
 				{
 					"id": 1004,
 					"title": "Market Research",
-					"status": "In Progress",
+					"status": "Completed",
 					"dueDate": "2023-05-15",
 					"assignee": {
 						"id": 203,
@@ -115,17 +115,34 @@
 						{
 							"id": 3005,
 							"description": "Collect data on the target audience.",
-							"completed": false
+							"completed": true
 						},
 						{
 							"id": 3006,
 							"description": "Analyze competitor marketing strategies.",
-							"completed": false
+							"completed": true
 						}
 					]
 				},
 				{
 					"id": 1005,
+					"title": "Vendor Contracting",
+					"status": "In Progress",
+					"dueDate": "2023-06-10",
+					"assignee": {
+						"id": 0,
+						"name": "Unassigned"
+					},
+					"todos": [
+						{
+							"id": 3027,
+							"description": "Contact vendors for supplies",
+							"completed": false
+						}
+					]
+				},
+				{
+					"id": 1015,
 					"title": "Campaign Planning",
 					"status": "Planned",
 					"dueDate": "2023-06-10",
@@ -252,12 +269,12 @@
 						{
 							"id": 3007,
 							"description": "Conduct user surveys and interviews.",
-							"completed": false
+							"completed": true
 						},
 						{
 							"id": 3008,
 							"description": "Analyze user feedback and pain points.",
-							"completed": false
+							"completed": true
 						}
 					]
 				},
