@@ -7,11 +7,6 @@
 			"status": "Completed",
 			"startDate": "2023-03-01",
 			"dueDate": "2023-08-30",
-			"manager": {
-				"id": 101,
-				"name": "John Doe",
-				"email": "john.doe@example.com"
-			},
 			"teamMembers": [
 				{
 					"id": 201,
@@ -89,11 +84,6 @@
 			"status": "In Progress",
 			"startDate": "2023-04-01",
 			"dueDate": "2023-07-15",
-			"manager": {
-				"id": 102,
-				"name": "Eva Green",
-				"email": "eva.green@example.com"
-			},
 			"teamMembers": [
 				{
 					"id": 203,
@@ -161,11 +151,6 @@
 			"status": "Planned",
 			"startDate": "2023-05-01",
 			"dueDate": "2023-10-15",
-			"manager": {
-				"id": 101,
-				"name": "John Doe",
-				"email": "john.doe@example.com"
-			},
 			"teamMembers": [
 				{
 					"id": 204,
@@ -210,11 +195,6 @@
 			"status": "Planned",
 			"startDate": "2023-05-15",
 			"dueDate": "2023-11-30",
-			"manager": {
-				"id": 102,
-				"name": "Eva Green",
-				"email": "eva.green@example.com"
-			},
 			"teamMembers": [
 				{
 					"id": 206,
@@ -243,11 +223,6 @@
 			"status": "In Progress",
 			"startDate": "2023-06-01",
 			"dueDate": "2023-12-31",
-			"manager": {
-				"id": 101,
-				"name": "John Doe",
-				"email": "john.doe@example.com"
-			},
 			"teamMembers": [
 				{
 					"id": 207,

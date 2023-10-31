@@ -1,7 +1,8 @@
 import { Routes, Route } from "react-router-dom";
-import ProjectView from "./pages/ProjectView";
+import ProjectView from "./pages/project/ProjectView";
 import Home from "./pages/Home";
 import Navbar from "./Navbar";
+import TeamView from "./pages/member/TeamView";
 
 const App = () => {
 	return (
@@ -13,8 +14,12 @@ const App = () => {
 					element={<Home />}
 				/>
 				<Route
-					path="/:id"
+					path="/project/:id"
 					element={<ProjectView />}
+				/>
+				<Route
+					path="/member/:id"
+					element={<TeamView />}
 				/>
 			</Routes>
 		</div>

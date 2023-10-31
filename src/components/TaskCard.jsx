@@ -18,7 +18,7 @@ const TaskView = ({ task, setEdit }) => {
 	return (
 		<div
 			key={task.id}
-			className="p-3 bg-white rounded-md drop-shadow-xl"
+			className="p-3 bg-white rounded-md drop-shadow-xl h-full"
 		>
 			<div className="flex justify-between">
 				<h2 className="font-semibold">{task.title}</h2>
@@ -81,7 +81,7 @@ const TaskForm = ({ task, setEdit }) => {
 	return (
 		<form
 			key={task.id}
-			className="p-3 bg-white rounded-md drop-shadow-xl"
+			className="p-3 bg-white rounded-md drop-shadow-xl h-full"
 		>
 			<div className="flex justify-between">
 				<input
