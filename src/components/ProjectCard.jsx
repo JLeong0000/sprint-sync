@@ -30,25 +30,25 @@ const ProjectCard = ({ project, tasks }) => {
 						<p>Start Date: {project.startDate}</p>
 						<p className="font-medium">Due Date: {project.dueDate}</p>
 					</div>
+					{tasks && (
+						<div className="space-y-1 my-3">
+							{project.tasks.map(task => (
+								<p
+									key={task.id}
+									className="p-2 rounded-sm bg-white drop-shadow-md cursor-pointer ease-in-out duration-75"
+									style={task.status === "Completed" ? { background: "lightgreen", textDecoration: "line-through" } : {}}
+								>
+									{task.title}
+								</p>
+							))}
+						</div>
+					)}
 				</div>
 				<StatusBar
 					tasks={project.tasks}
 					size={2}
 				/>
 			</div>
-			{tasks && (
-				<div className="space-y-1 my-3">
-					{project.tasks.map(task => (
-						<p
-							key={task.id}
-							className="p-2 rounded-sm bg-white drop-shadow-md cursor-pointer ease-in-out duration-75"
-							style={task.status === "Completed" ? { background: "lightgreen", textDecoration: "line-through" } : {}}
-						>
-							{task.title}
-						</p>
-					))}
-				</div>
-			)}
 		</div>
 	);
 };

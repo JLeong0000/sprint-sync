@@ -6,7 +6,7 @@ import TeamView from "./pages/member/TeamView";
 
 const App = () => {
 	return (
-		<div className="flex bg-[#efefef]">
+		<div className="bg-[#efefef] sm:flex">
 			<Navbar />
 			<Routes>
 				<Route

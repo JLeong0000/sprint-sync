@@ -26,8 +26,8 @@ const ProjectView = () => {
 	return (
 		<div className="flex-1 font-opensans">
 			{/* Header */}
-			<div className="bg-white drop-shadow-lg p-6 flex justify-between sticky top-0">
-				<h1 className="font-oswald font-bold text-4xl">{state.title}</h1>
+			<div className="bg-white drop-shadow-lg p-6 flex justify-between sticky top-0 z-20">
+				<h1 className="font-oswald font-bold text-3xl sm:text-4xl">{state.title}</h1>
 				<BackButton />
 			</div>
 

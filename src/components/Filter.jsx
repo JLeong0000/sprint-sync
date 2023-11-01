@@ -1,49 +1,59 @@
 import { Icon } from "@iconify/react";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 
 const Filter = ({ open, setOpen, setFilter }) => {
+	const [statusFilter, setStatusFilter] = useState("All Projects");
+
+	useEffect(() => {
+		if (open) {
+			document.addEventListener("mousedown", outsideClick);
+		}
+		return () => {
+			document.removeEventListener("mousedown", outsideClick);
+		};
+	}, [open]);
+
 	const handleSelect = option => {
 		setFilter(option);
 		setStatusFilter(option);
 		setOpen(false);
 	};
 
-	const [statusFilter, setStatusFilter] = useState("All Projects");
+	const ref = useRef();
+	const outsideClick = e => {
+		if (!ref.current.contains(e.target)) {
+			setOpen(false);
+		}
+	};
 
 	return open ? (
-		<div className="relative">
-			<div className="absolute right-0 bg-zinc-200 rounded-md ">
-				<button
-					onClick={() => setOpen(false)}
-					className="font-opensans container flex items-center justify-end bg-zinc-200 rounded-md px-4 pt-3"
-				>
-					<Icon
-						icon="ep:arrow-up-bold"
-						className="rotate-180"
-					/>
-				</button>
-				<div className="font-opensans min-w-max my-2">
+		<div
+			ref={ref}
+			className="relative"
+		>
+			<div className="absolute right-0 bg-zinc-200 rounded-md">
+				<div className="font-opensans min-w-max">
 					<p
 						onClick={() => handleSelect("All Projects")}
-						className="px-7 py-2 cursor-pointer hover:bg-zinc-300 active:bg-zinc-400"
+						className="px-7 py-2 cursor-pointer rounded-md hover:bg-zinc-300 active:bg-zinc-400"
 					>
 						All Projects
 					</p>
 					<p
 						onClick={() => handleSelect("Planned")}
-						className="px-7 py-2 cursor-pointer hover-bg-zinc-300 active-bg-zinc-400"
+						className="px-7 py-2 cursor-pointer rounded-md hover:bg-zinc-300 active:bg-zinc-400"
 					>
 						Planned
 					</p>
 					<p
 						onClick={() => handleSelect("In Progress")}
-						className="px-7 py-2 cursor-pointer hover-bg-zinc-300 active-bg-zinc-400"
+						className="px-7 py-2 cursor-pointer rounded-md hover:bg-zinc-300 active:bg-zinc-400"
 					>
 						In Progress
 					</p>
 					<p
 						onClick={() => handleSelect("Completed")}
-						className="px-7 py-2 cursor-pointer hover-bg-zinc-300 active-bg-zinc-400"
+						className="px-7 py-2 cursor-pointer rounded-md hover:bg-zinc-300 active:bg-zinc-400"
 					>
 						Completed
 					</p>

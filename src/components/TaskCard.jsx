@@ -58,6 +58,7 @@ const TaskView = ({ task, setEdit }) => {
 
 const TaskForm = ({ task, setEdit }) => {
 	const [status, setStatus] = useState("");
+	const [todos, setTodos] = useState({});
 
 	useEffect(() => {
 		if (task.status === "Planned") {
@@ -68,6 +69,11 @@ const TaskForm = ({ task, setEdit }) => {
 			setStatus("text-green-500");
 		}
 	}, [task]);
+
+	const addTodo = () => {
+		// addTodo button function
+		// setTodos to task.todos and then append each add todo?
+	};
 
 	const handleChange = e => {
 		const value = e.target.value;
@@ -81,82 +87,85 @@ const TaskForm = ({ task, setEdit }) => {
 	return (
 		<form
 			key={task.id}
-			className="p-3 bg-white rounded-md drop-shadow-xl h-full"
+			className="p-3 bg-white rounded-md drop-shadow-xl h-full flex flex-col justify-between"
 		>
-			<div className="flex justify-between">
-				<input
-					type="text"
-					defaultValue={task.title}
-					onChange={handleChange}
-					className="font-semibold border border-zinc-500 rounded-sm px-2 w-[75%]"
-				/>
-
-				<button
-					onClick={() => setEdit(false)}
-					className="px-2 text-red-500"
-				>
-					<Icon
-						icon="ph:x-bold"
-						width={20}
-					/>
-				</button>
-			</div>
-			<p>
-				Status:
-				<input
-					type=""
-					defaultValue={task.status}
-					className={`my-2 ${status} border mx-2 px-1 rounded-sm border-zinc-500`}
-				/>
-			</p>
-			<div className="space-y-1">
-				<p>
-					Due date:
-					<input
-						type="date"
-						defaultValue={task.dueDate}
-						className="border mx-2 px-1 rounded-sm border-zinc-500"
-					/>
-				</p>
-				<p>
-					Assignee:
+			<div>
+				<div className="flex justify-between">
 					<input
 						type="text"
-						defaultValue={task.assignee.name}
+						defaultValue={task.title}
 						onChange={handleChange}
-						className="border mx-2 px-1 rounded-sm border-zinc-500"
+						className="font-semibold border border-zinc-500 rounded-sm px-2 w-[75%]"
+					/>
+
+					<button
+						onClick={() => setEdit(false)}
+						className="px-2 text-red-500"
+					>
+						<Icon
+							icon="ph:x-bold"
+							width={20}
+						/>
+					</button>
+				</div>
+				<p>
+					Status:
+					<input
+						type=""
+						defaultValue={task.status}
+						className={`my-2 ${status} border mx-2 px-1 rounded-sm border-zinc-500`}
 					/>
 				</p>
-			</div>
-			<div className="my-2">
-				<div className="flex space-x-3 mt-4 mb-2">
-					<p>Todos:</p>
-					<button className="bg-zinc-200 px-2 rounded-sm hover:bg-zinc-300 active:bg-zinc-400">Add Todo</button>
-				</div>
-
 				<div className="space-y-1">
-					{task.todos.map(todo => {
-						return (
-							<div
-								key={todo.id}
-								className="flex items-center justify-between container border px-2 py-1 rounded-sm border-zinc-500"
-							>
-								<input
-									defaultValue={todo.description}
-									onChange={handleChange}
-									className="container"
-								/>
-								<button className="text-red-500 ml-2 text-xs h-full">
-									<Icon
-										icon="material-symbols:delete-outline"
-										width={18}
+					<p>
+						Due date:
+						<input
+							type="date"
+							defaultValue={task.dueDate}
+							className="border mx-2 px-1 rounded-sm border-zinc-500"
+						/>
+					</p>
+					<p>
+						Assignee:
+						<input
+							type="text"
+							defaultValue={task.assignee.name}
+							onChange={handleChange}
+							className="border mx-2 px-1 rounded-sm border-zinc-500"
+						/>
+					</p>
+				</div>
+				<div className="my-2">
+					<div className="flex space-x-3 mt-4 mb-2">
+						<p>Todos:</p>
+						<button className="bg-zinc-200 px-2 rounded-sm hover:bg-zinc-300 active:bg-zinc-400">Add Todo</button>
+					</div>
+
+					<div className="space-y-1">
+						{task.todos.map(todo => {
+							return (
+								<div
+									key={todo.id}
+									className="flex items-center justify-between container border px-2 py-1 rounded-sm border-zinc-500"
+								>
+									<input
+										defaultValue={todo.description}
+										onChange={handleChange}
+										className="container"
 									/>
-								</button>
-							</div>
-						);
-					})}
+									<button className="text-red-500 ml-2 text-xs h-full">
+										<Icon
+											icon="material-symbols:delete-outline"
+											width={18}
+										/>
+									</button>
+								</div>
+							);
+						})}
+					</div>
 				</div>
 			</div>
+
 			<div className="flex justify-end space-x-2 mt-4">
 				<button
 					onClick={() => setEdit(false)}

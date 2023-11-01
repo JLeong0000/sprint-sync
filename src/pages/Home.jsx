@@ -38,7 +38,7 @@ const Home = () => {
 
 	return (
 		<div className="flex-1">
-			<div className="sticky top-0 flex justify-between py-5 px-7 bg-white drop-shadow-lg z-50">
+			<div className="sticky top-0 flex justify-between py-5 px-7 bg-white drop-shadow-lg z-10">
 				<h1 className="font-oswald font-medium tracking-wide text-4xl">Overview</h1>
 				<Filter
 					open={open}
@@ -50,7 +50,7 @@ const Home = () => {
 				{filterData.length > 0
 					? filterData.map(project => (
 							<Link
-								to={`/${project.id}`}
+								to={`/project/${project.id}`}
 								key={project.id}
 								state={project}
 							>

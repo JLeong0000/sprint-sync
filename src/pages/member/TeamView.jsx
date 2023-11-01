@@ -53,7 +53,7 @@ const TeamView = () => {
 
 	return (
 		<div className="flex-1">
-			<div className="sticky top-0 flex justify-between py-5 px-7 bg-white drop-shadow-lg z-50">
+			<div className="sticky top-0 flex justify-between py-5 px-7 bg-white drop-shadow-lg z-20">
 				<h1 className="font-oswald font-medium tracking-wide text-4xl">{state.name}</h1>
 				<Filter
 					open={open}
