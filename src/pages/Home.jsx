@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useQuery } from "react-query";
+import { useQuery } from "@tanstack/react-query";
 import { getProjects } from "../api/projectsAPI";
 import { Link } from "react-router-dom";
 import Filter from "../components/Filter";
@@ -7,21 +7,21 @@ import ProjectCard from "../components/ProjectCard";
 import { customSort } from "../customSort";
 
 const Home = () => {
-	const { isLoading, isError, error, data } = useQuery("projects", getProjects);
+	const { isLoading, isError, error, data: projects } = useQuery({ queryKey: ["projects"], queryFn: getProjects });
 	const [open, setOpen] = useState(false);
 	const [filter, setFilter] = useState("");
 	const [filterData, setFilterData] = useState([]);
 
 	useEffect(() => {
 		if (!isLoading) {
-			const sortedData = data.projects.sort(customSort);
+			const sortedData = projects.sort(customSort);
 			if (filter !== "All Projects") {
 				setFilterData(sortedData.filter(project => project.status === filter));
 			} else {
 				setFilterData(sortedData);
 			}
 		}
-	}, [filter, data]);
+	}, [filter, projects]);
 
 	if (isLoading) {
 		return <p className="p-6">Loading...</p>;
@@ -57,7 +57,7 @@ const Home = () => {
 								<ProjectCard project={project} />
 							</Link>
 					  ))
-					: data.projects.map(project => (
+					: projects.map(project => (
 							<Link
 								to={`/project/${project.id}`}
 								key={project.id}

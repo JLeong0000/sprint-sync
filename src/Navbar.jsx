@@ -1,24 +1,36 @@
 import React, { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
-import { useQuery } from "react-query";
+import { useQuery } from "@tanstack/react-query";
 import { getProjects } from "./api/projectsAPI";
 import { Icon } from "@iconify/react";
 
 const Navbar = () => {
-	const { isLoading, isError, error, data } = useQuery("projects", getProjects);
+	// Redux store teamMembers
+	// Redux store activePage
+	const { isLoading, isError, error, data: projects } = useQuery({ queryKey: ["projects"], queryFn: getProjects });
 	const [teamMembers, setTeamMembers] = useState([]);
 	const [overviewActive, setOverviewActive] = useState(true);
 
 	const [open, setOpen] = useState(false);
 	const [current, setCurrent] = useState("Overview");
+	const ref = useRef();
+
+	const handleClick = clicked => {
+		setOverviewActive(false);
+		const updatedTeamMembers = teamMembers.map(member => ({
+			...member,
+			active: member.id === clicked,
+		}));
+		setTeamMembers(updatedTeamMembers);
+	};
 
 	useEffect(() => {
 		if (!isLoading) {
 			let team = [];
-			data.projects.forEach(project => {
+			projects.forEach(project => {
 				project.teamMembers.forEach(member => {
 					if (!team.includes(member.name)) {
-						team.push({ name: member.name, id: member.id, active: false });
+						team.push({ ...member, active: false });
 					}
 				});
 			});
@@ -32,20 +44,17 @@ const Navbar = () => {
 		return () => {
 			document.removeEventListener("mousedown", outsideClick);
 		};
-	}, [data, isLoading, open]);
+	}, [projects, isLoading, open]);
 
 	const handleMobileClick = item => {
 		setOpen(false);
 		setCurrent(item);
 	};
 
-	const handleClick = clicked => {
-		setOverviewActive(false);
-		const updatedTeamMembers = teamMembers.map(member => ({
-			...member,
-			active: member.id === clicked,
-		}));
-		setTeamMembers(updatedTeamMembers);
+	const outsideClick = e => {
+		if (!ref.current.contains(e.target)) {
+			setOpen(false);
+		}
 	};
 
 	const overviewClick = () => {
@@ -55,13 +64,6 @@ const Navbar = () => {
 			active: false,
 		}));
 		setTeamMembers(updatedTeamMembers);
-	};
-
-	const ref = useRef();
-	const outsideClick = e => {
-		if (!ref.current.contains(e.target)) {
-			setOpen(false);
-		}
 	};
 
 	return (

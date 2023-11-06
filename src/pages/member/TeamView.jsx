@@ -1,24 +1,30 @@
 import React, { useEffect, useState } from "react";
-import { useQuery } from "react-query";
+import { useQuery } from "@tanstack/react-query";
 import { getProjects } from "../../api/projectsAPI";
 import { Link, useLocation } from "react-router-dom";
-import Filter from "../../components/Filter";
-import ProjectCard from "../../components/ProjectCard";
 import { customSort } from "../../customSort";
 
+import Filter from "../../components/Filter";
+import ProjectCard from "../../components/ProjectCard";
+
 const TeamView = () => {
-	const { isLoading, isError, error, data } = useQuery("projects", getProjects);
+	const { isLoading, isError, error, data: projects } = useQuery({ queryKey: ["projects"], queryFn: getProjects });
 	const { state } = useLocation();
 	const [open, setOpen] = useState(false);
 	const [memberData, setMemberData] = useState([]);
 	const [filter, setFilter] = useState("");
 	const [filterData, setFilterData] = useState([]);
+	const [dataLoaded, setDataLoaded] = useState(false);
+
+	useEffect(() => {
+		setFilter("All Projects");
+	}, []);
 
 	useEffect(() => {
 		if (!isLoading) {
 			let memDat = [];
 
-			data.projects.forEach(project => {
+			projects.forEach(project => {
 				project.teamMembers.forEach(member => {
 					if (member.name === state.name) {
 						memDat.push(project);
@@ -29,6 +35,7 @@ const TeamView = () => {
 			setMemberData(memDat);
 
 			const sortedData = memberData.sort(customSort);
+			setDataLoaded(true);
 
 			if (filter !== "All Projects") {
 				setFilterData(sortedData.filter(project => project.status === filter));
@@ -36,7 +43,7 @@ const TeamView = () => {
 				setFilterData(sortedData);
 			}
 		}
-	}, [filter, data, state.id]);
+	}, [filter, projects, state.name, dataLoaded]);
 
 	if (isLoading) {
 		return <p className="p-6">Loading...</p>;
@@ -51,6 +58,10 @@ const TeamView = () => {
 		);
 	}
 
+	if (!dataLoaded) {
+		return <p className="p-6">Filtering data...</p>;
+	}
+
 	return (
 		<div className="flex-1">
 			<div className="sticky top-0 flex justify-between py-5 px-7 bg-white drop-shadow-lg z-20">
@@ -62,31 +73,19 @@ const TeamView = () => {
 				/>
 			</div>
 			<div className="m-5 grid gap-4 grid-cols-1 lg:grid-cols-2">
-				{filterData.length > 0
-					? filterData.map(project => (
-							<Link
-								to={`/${project.id}`}
-								key={project.id}
-								state={project}
-							>
-								<ProjectCard
-									project={project}
-									tasks
-								/>
-							</Link>
-					  ))
-					: memberData.map(project => (
-							<Link
-								to={`/project/${project.id}`}
-								key={project.id}
-								state={project}
-							>
-								<ProjectCard
-									project={project}
-									tasks
-								/>
-							</Link>
-					  ))}
+				{filterData.length > 0 &&
+					filterData.map(project => (
+						<Link
+							to={`/project/${project.id}`}
+							key={project.id}
+							state={project}
+						>
+							<ProjectCard
+								project={project}
+								tasks
+							/>
+						</Link>
+					))}
 			</div>
 		</div>
 	);

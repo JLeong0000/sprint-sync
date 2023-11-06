@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import ProjectView from "./pages/project/ProjectView";
+import ProjectPage from "./pages/project/ProjectPage";
 import Home from "./pages/Home";
 import Navbar from "./Navbar";
 import TeamView from "./pages/member/TeamView";
@@ -15,7 +15,7 @@ const App = () => {
 				/>
 				<Route
 					path="/project/:id"
-					element={<ProjectView />}
+					element={<ProjectPage />}
 				/>
 				<Route
 					path="/member/:id"
