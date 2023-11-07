@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { getProjects } from "./api/projectsAPI";
 import { Icon } from "@iconify/react";
+import ResetButton from "./components/ResetButton";
 
 const Navbar = () => {
 	// Redux store teamMembers
@@ -67,11 +68,14 @@ const Navbar = () => {
 	};
 
 	return (
-		<nav className="relative top-0 flex px-3 py-4 bg-emerald-950 h-full space-x-4 sm:py-10 sm:sticky sm:space-x-0 sm:space-y-10 sm:w-[200px] sm:flex-col sm:h-screen md:px-10 md:w-[260px]">
-			<h1 className="font-oswald font-medium flex flex-col items-center text-white text-3xl pb-2 pl-4 pr-1 sm:tracking-wide sm:text-4xl sm:pb-0 sm:px-0">
+		<nav className="top-0 left-0 overflow-y-auto flex px-3 py-4 bg-emerald-950 h-full space-x-4 sm:py-10 sm:sticky sm:space-x-0 sm:space-y-8 sm:w-[200px] sm:flex-col sm:h-screen md:px-10 md:w-[260px]">
+			<h1 className="font-oswald font-medium flex flex-col items-center text-white text-3xl pb-2 pl-4 pr-1 sm:tracking-wide sm:text-4xl sm:px-0">
 				SPRINT <span className="text-emerald-300 -my-2 tracking-widest text-4xl sm:text-5xl">SYNC</span>
 			</h1>
-			<span className="border-white border-l-[1px] sm:border-t-[1px] my-0 hidden sm:block" />
+			<div>
+				<span className="border-white border-l-[1px] sm:border-t-[1px] my-0 hidden sm:block" />
+				<ResetButton />
+			</div>
 
 			{/* Mobile Links */}
 			{open ? (
@@ -130,19 +134,21 @@ const Navbar = () => {
 					Overview
 				</Link>
 				<p className="py-2 pl-4 underline underline-offset-4 text-sm sm:pt-4 sm:pb-2">Team Members</p>
-				{!isLoading &&
-					!isError &&
-					teamMembers.map(member => (
-						<Link
-							to={`/member/${member.id}`}
-							key={member.id}
-							state={member}
-							onClick={() => handleClick(member.id)}
-							className={`${member.active && "bg-emerald-300 text-black"} px-5 py-3 rounded-md hover:bg-emerald-300 hover:text-black active:bg-emerald-500`}
-						>
-							{member.name}
-						</Link>
-					))}
+				{!isLoading && !isError && (
+					<div className="flex flex-col">
+						{teamMembers.map(member => (
+							<Link
+								to={`/member/${member.id}`}
+								key={member.id}
+								state={member}
+								onClick={() => handleClick(member.id)}
+								className={`${member.active && "bg-emerald-300 text-black"} px-5 py-3 rounded-md hover:bg-emerald-300 hover:text-black active:bg-emerald-500`}
+							>
+								{member.name}
+							</Link>
+						))}
+					</div>
+				)}
 			</div>
 		</nav>
 	);

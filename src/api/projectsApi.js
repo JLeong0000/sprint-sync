@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const projectsApi = axios.create({ baseURL: "http://localhost:3500" });
+const projectsApi = axios.create({ baseURL: "http://localhost:3000" });
 
 // Project API methods
 
@@ -21,6 +21,12 @@ export const updateProject = async project => {
 
 export const deleteProject = async ({ id }) => {
 	const response = await projectsApi.delete(`/projects/${project.id}`, id);
+	return response.data;
+};
+
+export const resetProjects = async projects => {
+	await projectsApi.delete("/projects");
+	const response = await projectsApi.post("/projects", projects);
 	return response.data;
 };
 
